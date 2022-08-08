@@ -1,0 +1,47 @@
+<div class="container p-4 list table-responsive">
+  <div class="row">
+    {{#if eticolors}}
+    <table class="table table-dark table-striped table-hover align-middle">
+      <thead>
+        <tr class="table-secondary">
+          <th scope="col" class="col-md-1">#</th>
+          <th scope="col" class="col-md-1">RGB Color</th>
+          <th scope="col" class="col">Designation</th>
+          <th scope="col" class="col-md-2">Created At</th>
+          <th scope="col" class="col-md-2">Modified At</th>
+          <th scope="col" class="col-md-1"></th>
+          <th scope="col" class="col-md-1"></th>
+        </tr>
+      </thead>    
+    {{#each eticolors}}    
+      <tbody>
+        <tr class="table-active">
+          <td>{{id}}</td>  
+          <td><div style="background-color:{{rgbcode}}; color:{{rgbcode}};">{{rgbcode}}</div></td>
+          <td>{{designation}}</td>
+          <td>{{timeago created_at}}</td>
+          <td>{{timeago modified_at}}</td>
+          <td>
+            <a class="btn btn-danger btn-block" href="/eticolors/delete/{{id}}">
+              Delete Link
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-secondary btn-block" href="/eticolors/edit/{{id}}">
+              Edit Link
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    {{/each}}
+    </table>
+    {{else}}
+      <div class="col-md-4 mx-auto">
+        <div class="card card-body text-center bg-dark text-light">
+          <p>There are not Eti Colors saved yet.</p>
+          <a href="/eticolors/add" class="text-success">Create One!</a>
+        </div>
+      </div>    
+    {{/if}}    
+  </div>
+</div>

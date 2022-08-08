@@ -1,0 +1,89 @@
+<div class="container p-4 h-100">
+  <div class="row h-75 d-flex align-items-center">
+    <div class="col-md-4 mx-auto">
+      <div class="card bg-dark">
+        <form action="/registers/edit/{{register.id}}" method="POST" class="card-body">
+
+          {{! Title and save button }}
+          <div class="d-flex justify-content-between align-items-center mb-3">            
+              <h1 class="text-light mb-3 h4">Edit Register number: {{register.id}}</h1>            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-success btn-block">Save</button>
+              <a href="/registers" class="btn btn-danger btn-block">Cancel</a>
+            </div>
+          </div>
+
+          <label for="color_id">Eti Color:</label>
+          <select 
+            class="form-select bg-dark text-light mb-3"           
+            name="color_id"
+            aria-placeholder="Select a Eti Color"
+           >
+            {{#if eticolors}}
+            <option selected>Open this select menu</option>
+            {{#each eticolors}}                
+            <option value="{{id}}">
+              <div>{{rgbcode}}</div>
+            </option>                        
+            {{/each}}
+            {{/if}}
+          </select>
+
+          <label for="part_id">Part:</label>
+          <select 
+            class="form-select bg-dark text-light mb-3"           
+            name="part_id"
+            aria-placeholder="Select a Part"
+           >
+            {{#if parts}}
+            <option selected>Open this select menu</option>
+            {{#each parts}}
+            <option value="{{id}}">
+                <div>{{np}}</div>                
+                <div>{{designation}}</div>
+            </option>            
+            {{/each}}
+            {{/if}}
+          </select>
+
+          <label for="label">Label:</label>
+          <input
+            type="text"
+            name="label"
+            class="form-control bg-dark text-light mb-3"
+            placeholder="label"
+            value="{{register.label}}"
+            required
+          />
+
+          <label for="default_id">Default:</label>
+          <select 
+            class="form-select bg-dark text-light mb-3"           
+            name="default_id"
+            aria-placeholder="Select a Part"
+           >
+            {{#if defaults}}
+            <option selected>Open this select menu</option>
+            {{#each defaults}}
+            <option value="{{id}}">                                
+                <div>{{designation}}</div>
+            </option>            
+            {{/each}}
+            {{/if}}
+          </select>
+          
+          <label for="observation">Observation:</label>
+          <textarea
+            name="observation"
+            rows="4"
+            class="form-control bg-dark text-light mb-3"
+            placeholder="Observation"
+            maxlength="512"
+          >{{register.observation}}</textarea>
+          
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

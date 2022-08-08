@@ -1,0 +1,53 @@
+<div class="container p-4 list table-responsive">
+  <div class="row">
+    {{#if records}}
+    <table class="table table-dark table-striped table-hover align-middle">
+      <thead>
+        <tr class="table-secondary">
+          <th scope="col" class="">#</th>
+          <th scope="col" class="col-md-1">Eti Color</th>
+          <th scope="col" class="">Part</th>
+          <th scope="col" class="col-md-1">Label</th>
+          <th scope="col" class="col-md-2">Default</th>
+          <th scope="col" class="col-md-2">Observation</th>
+          <th scope="col" class="col-md-1">Created At</th>
+          <th scope="col" class="col-md-1">Modified At</th>
+          <th scope="col" class="col-md-1"></th>
+          <th scope="col" class="col-md-1"></th>
+        </tr>
+      </thead>    
+    {{#each records}}    
+      <tbody>
+        <tr class="table-active">
+          <td>{{r_id}}</td>
+          <td><div style="background-color:{{e_rgbcode}}; color:{{e_rgbcode}};">{{e_designation}}</div></td>
+          <td>{{p_np}}</td>          
+          <td>{{r_label}}</td>
+          <td>{{d_designation}}</td>
+          <td>{{r_observation}}</td>
+          <td>{{timeago r_created_at}}</td>
+          <td>{{timeago r_modified_at}}</td>
+          <td class="col">
+            <a class="btn btn-danger" href="/registers/delete/{{r_id}}">
+              Delete Register
+            </a>
+          </td>
+          <td>
+            <a class="btn btn-secondary" href="/registers/edit/{{r_id}}">
+              Edit Register
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    {{/each}}
+    </table>
+    {{else}}
+      <div class="col-md-4 mx-auto">
+        <div class="card card-body text-center bg-dark text-light">
+          <p>There are not Registers saved yet.</p>
+          <a href="/registers/add" class="text-success">Create One!</a>
+        </div>
+      </div>    
+    {{/if}}    
+  </div>
+</div>

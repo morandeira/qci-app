@@ -1,0 +1,41 @@
+<div class="container p-4 h-100">
+  <div class="row h-75 d-flex align-items-center">
+    <div class="col-md-4 mx-auto">
+      <div class="card bg-dark">
+        <form action="/eticolors/edit/{{eticolor.id}}" method="POST" class="card-body">
+
+          {{! Title and save button }}
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            
+              <h1 class="text-light mb-3 h4">Edit Eti Color ID number: {{eticolor.id}}</h1>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-success btn-block">Save</button>
+              <a href="/eticolors" class="btn btn-danger btn-block">Cancel</a>
+            </div>          
+          </div>
+
+          <label for="rgbcode">Color Picker:</label>
+          <input 
+            type="color"
+            class="form-control bg-dark text-light mb-3"
+            name="rgbcode"
+            value="{{eticolor.rgbcode}}"
+            title="Choose your color"
+            autofocus
+          />
+
+          <label for="designation">Designation:</label>
+          <input
+            type="text"
+            name="designation"
+            class="form-control bg-dark text-light mb-3"
+            value="{{eticolor.designation}}"
+          />
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
