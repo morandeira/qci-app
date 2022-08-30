@@ -39,7 +39,7 @@ SELECT_PARTS = "SELECT * FROM Parts"
 
 INSERT_REGISTER = "INSERT INTO Registers set ?"
 DELETE_REGISTER = "DELETE FROM Registers WHERE id = ?"
-RENDER_REGISTERS = "SELECT * FROM Registers WHERE user_id = ?" 
+RENDER_REGISTERS = "select Registers.id as r_id, Eticolors.rgbcode as e_rgbcode, Eticolors.designation as e_designation, Parts.np as p_np, Registers.label as r_label, Defaults.designation as d_designation, Registers.observation as r_observation, Registers.created_at as r_created_at, Registers.modified_at as r_modified_at from Registers left join Eticolors on  Registers.color_id = Eticolors.id left join Parts on Registers.part_id = Parts.id left join Defaults on Registers.default_id = Defaults.id where Registers.user_id = ? order by Registers.id desc" 
 RENDER_REGISTER = "SELECT * FROM Registers WHERE id = ?"
 UPDATE_REGISTER = "UPDATE Registers set ? WHERE id = ?"
 
