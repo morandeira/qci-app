@@ -61,6 +61,8 @@ create table if not exists Registers (
   label VARCHAR(10) not null,
   default_id int1 unsigned,
   observation varchar(512),
+  uuid_image varchar(36),
+  ext__image varchar(4),
   user_id int1 unsigned not null,
   created_at timestamp default current_timestamp,
   modified_at timestamp,

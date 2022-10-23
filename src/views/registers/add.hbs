@@ -2,7 +2,7 @@
   <div class="row h-75 d-flex align-items-center">
     <div class="col-md-4 mx-auto">
       <div class="card bg-dark">
-        <form action="/registers/add" method="POST" class="card-body">
+        <form action="/registers/add" method="POST" class="card-body" enctype="multipart/form-data">
 
           {{! Title and save button }}
           <div class="d-flex justify-content-between align-items-center mb-3">            
@@ -72,7 +72,8 @@
             {{/each}}
             {{/if}}
           </select>
-          
+          <label for="image">Imagen</label>
+          <input type="file" name="image">
           <label for="observation">Observation:</label>
           <textarea
             name="observation"

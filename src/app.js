@@ -4,8 +4,10 @@ import session from "express-session";
 import passport from "passport";
 import flash from "connect-flash";
 import expressMySQLSession from "express-mysql-session";
+import multer from "multer";
+import * as uuid from 'uuid';
 
-import { dirname, join } from 'path';
+import { dirname, join, extname } from 'path';
 import { fileURLToPath } from "url";
 import { create } from "express-handlebars";
 
@@ -19,6 +21,12 @@ import "./lib/passport.js";
 const MySQLStore = expressMySQLSession(session);
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const storage = multer.diskStorage({
+  destination: join(__dirname, "public/img/uploads"),
+  filename: (req, file, cb) => {
+    cb(null, uuid.v4() + extname(file.originalname).toLocaleLowerCase());
+  }
+});
 
 // Settings
 app.set("port", port);
@@ -34,6 +42,7 @@ app.engine(
   }).engine
 );
 app.set("view engine", ".hbs");
+
 
 // Middlewares
 app.use(morgan("dev"));
@@ -51,6 +60,25 @@ app.use(
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(
+  multer({
+    storage,
+    dest: join(__dirname, "public/img/uploads"),
+    limits: {
+      fieldSize: 5000000
+    },
+    fileFilter: (req, file, cb) => {
+      const extension = /(jpg|jpeg|png|gif)/;
+      const file_ext = extension.test(extname(file.originalname));
+      if (file_ext) {
+        return cb(null, true);
+      } else {
+        cb("ERROR:.................");  
+      };   
+    }
+  }).single('image')
+);
 
 // Global variables
 app.use((req, res, next) => {
