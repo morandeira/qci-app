@@ -1,6 +1,7 @@
 import pool from "../database.js";
 import { config } from "dotenv";
 import { dt } from "../lib/utils.js";
+import { MulterError } from "multer";
 
 config();
 
@@ -17,23 +18,34 @@ export const renderAddRegister = async (req, res) => {
 
 export const addRegister = async (req, res) => {
   try {
-    const { color_id, part_id, label, default_id, observation } = req.body;
-    const newRegister = {
-      color_id,
-      part_id,
-      label,
-      default_id,
-      observation,
-      user_id: req.user.id
-    };
-    await pool.query(process.env.INSERT_REGISTER, [newRegister]);
-    req.flash("success", "Register Saved Successfully");
-    res.redirect("/registers");
-  } catch (error) {
-    console.log(error);       // Capturar el error sqlState, sqlMessage
-    req.flash("message", "Error Nº " + error.errno + " -> " + error.sqlMessage);
+    // console.log("isFileValid: " + req.isFileValid);
+    if (req.isFileValid === undefined || req.isFileValid === true) {      
+      try {         
+        const { color_id, part_id, label, default_id, observation } = req.body;
+        const newRegister = {
+          color_id,
+          part_id,
+          label,
+          default_id,
+          observation,
+          user_id: req.user.id
+        };
+        await pool.query(process.env.INSERT_REGISTER, [newRegister]);
+        req.flash("success", "Register Saved Successfully");
+        res.redirect("/registers");
+     } catch (e) {
+        console.log(e);
+        req.flash("message", "Error Nº " + e.errno + " -> " + e.sqlMessage);
+        res.redirect("#");
+     };
+    } else {
+      throw MulterError;
+    }
+  } catch (e) {
+    console.log(e);
+    req.flash("message", "File is not uploadable");      
     res.redirect("#");
-  };
+  };  
 };
 
 export const renderRegisters = async (req, res) => {

@@ -71,11 +71,13 @@ app.use(
     fileFilter: (req, file, cb) => {
       const extension = /(jpg|jpeg|png|gif)/;
       const file_ext = extension.test(extname(file.originalname));
-      if (file_ext) {
+      console.log("file_ext: " + file_ext);
+      req.isFileValid = file_ext;
+      if (file_ext) {        
         return cb(null, true);
       } else {
-        cb("ERROR:.................");  
-      };   
+        return cb(null, false);   
+      };            
     }
   }).single('image')
 );
