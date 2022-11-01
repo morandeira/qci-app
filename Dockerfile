@@ -1,6 +1,6 @@
-FROM node:14
+FROM node:18
 
-WORKDIR /app
+WORKDIR /qci-app
 
 COPY package*.json ./
 

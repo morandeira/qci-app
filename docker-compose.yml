@@ -3,23 +3,23 @@ version: "3.8"
 services:
   app:
     image: node
-    container_name: linksweb
+    container_name: node_qci_app
     ports:
       - "4000:4000"
     volumes:
-      - .:/app
+      - .:/qci-app
     environment:
       - NODE_ENV=development
 
   db:
-    image: mysql:5.7
-    container_name: mysql
+    image: mariadb
+    container_name: DATABASES
     ports:
       - "3306:3306"
     logging:
       driver: none
     environment:
-      - MYSQL_DATABASE=database
-      - MYSQL_USER="user"
-      - MYSQL_PASSWORD="password"
-      - MYSQL_ROOT_PASSWORD="root_password"
+      - MARIADB_DATABASE=database
+      - MARIADB_USER="marcos"
+      - MARIADB_PASSWORD="marcos123"
+      - MARIADB_ROOT_PASSWORD="root123"

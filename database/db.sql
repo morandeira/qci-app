@@ -1,3 +1,5 @@
+-- docker run --detach -p 3306:3306 --name DATABASES --env MARIADB_USER=marcos --env MARIADB_PASSWORD=marcos123 --env MARIADB_ROOT_PASSWORD=root123  mariadb
+
 CREATE DATABASE if not exists DBQualityGate;
 
 USE DBQualityGate;
