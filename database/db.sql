@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE if not exists DBQualityGate;
 
 USE DBQualityGate;

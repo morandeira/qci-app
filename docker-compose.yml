@@ -10,7 +10,7 @@ services:
       - "4000:4000"
     environment:
       - NODE_ENV=development
-      - DATABASE_HOST=db
+      - DATABASE_HOST=localhost
       - DATABASE_USER=root
       - DATABASE_PASSWORD=root123
       - DATABASE_NAME=DBQualityGate
