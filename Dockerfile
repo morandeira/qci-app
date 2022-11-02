@@ -1,4 +1,4 @@
-FROM node:18
+FROM node
 
 WORKDIR /qci-app
 
@@ -11,3 +11,4 @@ COPY . .
 EXPOSE 4000
 
 CMD ["npm", "run", "dev"]
+

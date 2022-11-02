@@ -1,6 +1,22 @@
 version: "3.8"
 
 services:
+  
+  db:
+    image: mariadb
+    container_name: DATABASES
+    ports:
+      - "3306:3306"
+    logging:
+      driver: none
+    depends_on:
+    - db
+    environment:
+      - MARIADB_DATABASE="DBQualityGate"
+      - MARIADB_USER="marcos"
+      - MARIADB_PASSWORD="marcos123"
+      - MARIADB_ROOT_PASSWORD="root123"
+
   app:
     image: node
     container_name: node_qci_app
@@ -11,15 +27,7 @@ services:
     environment:
       - NODE_ENV=development
 
-  db:
-    image: mariadb
-    container_name: DATABASES
-    ports:
-      - "3306:3306"
-    logging:
-      driver: none
-    environment:
-      - MARIADB_DATABASE="DBQualityGate"
-      - MARIADB_USER="marcos"
-      - MARIADB_PASSWORD="marcos123"
-      - MARIADB_ROOT_PASSWORD="root123"
+
+    command: 
+
+  
