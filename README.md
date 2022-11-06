@@ -47,6 +47,10 @@ SELECT_USERS_by_USERNAME = "SELECT * FROM Users WHERE username = ?"
 INSERT_USER = "INSERT INTO Users SET ?"
 SELECT_USERS_by_ID = "SELECT * FROM Users WHERE id = ?"
 
+## Commands
+
+- docker exec -i DATABASE sh -c 'exec mariadb -uroot -p"root123"' < /home/marcos/Documentos/Coder/qci-app/database/db.sql
+
 ## File Structure
 
 - database, it the folder with all the sql queries, you can use to recreate the database for this application
