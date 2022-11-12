@@ -49,7 +49,9 @@ SELECT_USERS_by_ID = "SELECT * FROM Users WHERE id = ?"
 
 ## Commands
 
+- docker run -d --name mycontainername -e MARIADB_ROOT_PASSWORD=mypassword mariadb/server
 - docker exec -i DATABASE sh -c 'exec mariadb -uroot -p"root123"' < /home/marcos/Documentos/Coder/qci-app/database/db.sql
+- docker exec -it mycontainername bash
 
 ## File Structure
 
