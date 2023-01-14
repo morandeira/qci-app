@@ -25,20 +25,20 @@
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^2.3.3",
+    "mysql2": "^3.0.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "timeago.js": "^4.0.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.20.2",
-    "@babel/node": "^7.20.2",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
     "ncp": "^2.0.0",
     "nodemon": "^2.0.20",
-    "rimraf": "^3.0.2"
+    "rimraf": "^4.0.5"
   }
 }
